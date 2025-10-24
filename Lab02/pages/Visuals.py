@@ -85,7 +85,7 @@ st.subheader("Dynamic: Line Graph by Day Range ") # CHANGE THIS TO THE TITLE OF 
 
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-current_data_df['Category'] = pd.Categorical(current_data_df['Category'], categories=days, ordered=True)
+current_data_df['Day'] = pd.Categorical(current_data_df['Day'], categories=days, ordered=True)
 
 day_num = {}
 for i in range(len(days)):
@@ -95,16 +95,16 @@ for i in range(len(days)):
     #print(day_num)
 
 day_nums = []
-for day in current_data_df['Category']:
+for day in current_data_df['Day']:
     num = day_num[day] 
     day_nums.append(num)
     
 start, end = st.slider("Select day range", 0, 6, (0, 6)) #NEW
 
 rangeDays = list(range(start, end +1))
-finalDf = current_data_df[current_data_df["Category"].isin(rangeDays)]
+finalDf = current_data_df[current_data_df["Day"].isin(rangeDays)]
 
-st.line_chart(finalDf["Value"])
+st.line_chart(finalDf["Hours"])
 
 st.write("This graph shows you your data represented in a line graph according to the day range you set it at.")
 
