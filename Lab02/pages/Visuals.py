@@ -66,7 +66,7 @@ updated_hours = new_hours.dropna()
 
 hist_data = updated_hours.value_counts().sort_index()
 
-st.bar_chart(hist_data)
+st.bar_chart(hist_data) #NEW
 
 
 
@@ -122,7 +122,9 @@ newDf = pd.DataFrame(sampleData["data_points"])
 newDf['hours'] = pd.to_numeric(newDf['hours'])
 newDf = newDf.sort_values('hours')                          
 
-st.line_chart(newDf['value'])
+st.line_chart(newDf['value']) #NEW
+
+st.write("This graph shows the level of productivity according to number of hours spent on social media per day.")
 
 
 
